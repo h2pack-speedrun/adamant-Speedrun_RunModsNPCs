@@ -7,12 +7,12 @@ table.insert(option_fns,
         tooltip =
         "Forces Arachne to spawn to reduce death pity reset."
     })
-table.insert(apply_fns, {
+table.insert(patch_fns, {
     key = "ForceArachne",
-    fn = function()
-        backup(RoomSetData.F.F_Story01, "ForceAtBiomeDepthMin")
-        backup(RoomSetData.F.F_Story01, "ForceAtBiomeDepthMax")
-        RoomSetData.F.F_Story01.ForceAtBiomeDepthMin = 4
-        RoomSetData.F.F_Story01.ForceAtBiomeDepthMax = 8
+    fn = function(plan)
+        plan:setMany(RoomSetData.F.F_Story01, {
+            ForceAtBiomeDepthMin = 4,
+            ForceAtBiomeDepthMax = 8,
+        })
     end
 })

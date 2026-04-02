@@ -7,10 +7,9 @@ table.insert(option_fns,
         tooltip =
         "Disables Arachne Pity entirely for Anyfear runs."
     })
-table.insert(apply_fns, {
+table.insert(patch_fns, {
     key = "DisableArachnePity",
-    fn = function()
-        backup(RoomSetData.F.F_Story01, "ForceIfUnseenForRuns")
-        RoomSetData.F.F_Story01.ForceIfUnseenForRuns = nil
+    fn = function(plan)
+        plan:set(RoomSetData.F.F_Story01, "ForceIfUnseenForRuns", nil)
     end
 })

@@ -7,12 +7,12 @@ table.insert(option_fns,
         tooltip =
         "Forces Medea to spawn to reduce death pity reset."
     })
-table.insert(apply_fns, {
+table.insert(patch_fns, {
     key = "ForceMedea",
-    fn = function()
-        backup(RoomSetData.N.N_Story01, "ForceAtBiomeDepthMin")
-        backup(RoomSetData.N.N_Story01, "ForceAtBiomeDepthMax")
-        RoomSetData.N.N_Story01.ForceAtBiomeDepthMin = 0
-        RoomSetData.N.N_Story01.ForceAtBiomeDepthMax = 1
+    fn = function(plan)
+        plan:setMany(RoomSetData.N.N_Story01, {
+            ForceAtBiomeDepthMin = 0,
+            ForceAtBiomeDepthMax = 1,
+        })
     end
 })

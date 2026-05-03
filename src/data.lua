@@ -1,4 +1,4 @@
--- luacheck: globals RunModsNPCsInternal public
+-- luacheck: globals RunModsNPCsInternal
 local internal = RunModsNPCsInternal
 
 internal.patch_fns = {}
@@ -7,9 +7,9 @@ internal.option_fns = {}
 
 local PACK_ID = "speedrun"
 
-local function BuildStorage(options)
+function internal.BuildStorage()
     local storage = {}
-    for _, option in ipairs(options) do
+    for _, option in ipairs(internal.option_fns) do
         if option.type == "checkbox" then
             table.insert(storage, {
                 type = "bool",
@@ -28,7 +28,5 @@ import("behaviors/DisableSeleneBeforeBoon.lua")
 import("behaviors/ForceArachne.lua")
 import("behaviors/ForceMedea.lua")
 import("behaviors/PreventEchoScam.lua")
-
-public.definition.storage = BuildStorage(internal.option_fns)
 
 return internal

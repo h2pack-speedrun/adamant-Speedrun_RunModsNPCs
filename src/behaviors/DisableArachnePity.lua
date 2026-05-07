@@ -5,7 +5,7 @@ local patch_fns = internal.patch_fns
 table.insert(option_fns,
     {
         type = "checkbox",
-        configKey = "DisableArachnePity",
+        alias = "DisableArachnePity",
         label = "Disable Arachne Pity",
         default = false,
         tooltip =

@@ -5,7 +5,7 @@ local patch_fns = internal.patch_fns
 table.insert(option_fns,
     {
         type = "checkbox",
-        configKey = "ForceArachne",
+        alias = "ForceArachne",
         label = "Force Arachne Spawn",
         default = false,
         tooltip =

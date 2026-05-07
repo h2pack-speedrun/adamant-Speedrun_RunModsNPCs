@@ -5,7 +5,7 @@ local patch_fns = internal.patch_fns
 table.insert(option_fns,
     {
         type = "checkbox",
-        configKey = "PreventEchoScam",
+        alias = "PreventEchoScam",
         label = "Prevent Echo Scam",
         default = false,
         tooltip =

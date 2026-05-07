@@ -5,7 +5,7 @@ local patch_fns = internal.patch_fns
 table.insert(option_fns,
     {
         type = "checkbox",
-        configKey = "ForceMedea",
+        alias = "ForceMedea",
         label = "Force Medea Spawn",
         default = false,
         tooltip =

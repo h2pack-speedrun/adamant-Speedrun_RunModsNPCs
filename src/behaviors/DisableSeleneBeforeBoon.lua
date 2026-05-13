@@ -1,32 +1,30 @@
-local internal = RunModsNPCsInternal
-local option_fns = internal.option_fns
-local patch_fns = internal.patch_fns
-
-table.insert(option_fns,
-    {
+return {
+    option = {
         type = "checkbox",
         alias = "DisableSeleneBeforeBoon",
         label = "Disable Selene Before First Boon",
         default = false,
         tooltip =
         "Prevents Selene from spawning before the first boon is obtained."
-    })
-
-table.insert(patch_fns, {
-    key = "DisableSeleneBeforeBoon",
-    fn = function(plan)
-        local additionalSpellReq = {
-            Path = { "CurrentRun", "LootTypeHistory" },
-            CountOf = {
-                "AphroditeUpgrade", "ApolloUpgrade", "DemeterUpgrade",
-                "HephaestusUpgrade", "HestiaUpgrade", "HeraUpgrade",
-                "PoseidonUpgrade", "ZeusUpgrade", "AresUpgrade", "WeaponUpgrade"
-            },
-            Comparison = ">=",
-            Value = 1
-        }
-        if NamedRequirementsData and NamedRequirementsData.SpellDropRequirements then
-            plan:appendUnique(NamedRequirementsData, "SpellDropRequirements", additionalSpellReq)
-        end
-    end
-})
+    },
+    patches = {
+        {
+            key = "DisableSeleneBeforeBoon",
+            fn = function(plan)
+                local additionalSpellReq = {
+                    Path = { "CurrentRun", "LootTypeHistory" },
+                    CountOf = {
+                        "AphroditeUpgrade", "ApolloUpgrade", "DemeterUpgrade",
+                        "HephaestusUpgrade", "HestiaUpgrade", "HeraUpgrade",
+                        "PoseidonUpgrade", "ZeusUpgrade", "AresUpgrade", "WeaponUpgrade"
+                    },
+                    Comparison = ">=",
+                    Value = 1
+                }
+                if NamedRequirementsData and NamedRequirementsData.SpellDropRequirements then
+                    plan:appendUnique(NamedRequirementsData, "SpellDropRequirements", additionalSpellReq)
+                end
+            end
+        },
+    },
+}
